@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Paddle/Paddle.gd" type="Script" id=1]
 [ext_resource path="res://Ball/Ball_Container.gd" type="Script" id=2]
@@ -12,8 +12,14 @@
 [ext_resource path="res://Ball/Trail_Container.gd" type="Script" id=10]
 [ext_resource path="res://Camera/WorldEnvironment.gd" type="Script" id=11]
 [ext_resource path="res://Paddle/Face.gd" type="Script" id=12]
+[ext_resource path="res://Assets/pupil.png" type="Texture" id=13]
+[ext_resource path="res://Assets/mouth.png" type="Texture" id=14]
+[ext_resource path="res://Assets/eye.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Datalegreya-Thin.otf" type="DynamicFontData" id=16]
 [ext_resource path="res://Audio/Music.gd" type="Script" id=17]
+[ext_resource path="res://Assets/MUSCPerc_Bass tom 1 (ID 2338)_BSB.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Assets/MUSCPerc_Bass tom 4 (ID 2341)_BSB.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Assets/HMNHart_Heart beat 5 (ID 1930)_BSB.ogg" type="AudioStream" id=20]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
@@ -160,6 +166,26 @@ shape = SubResource( 8 )
 [node name="Face" type="Node2D" parent="Paddle_Container/Paddle"]
 script = ExtResource( 12 )
 
+[node name="Eye_Left" type="Sprite" parent="Paddle_Container/Paddle/Face"]
+position = Vector2( -35, -10 )
+texture = ExtResource( 15 )
+
+[node name="Eye_Right" type="Sprite" parent="Paddle_Container/Paddle/Face"]
+position = Vector2( 35, -10 )
+texture = ExtResource( 15 )
+
+[node name="Pupil_Left" type="Sprite" parent="Paddle_Container/Paddle/Face"]
+position = Vector2( -35, 0 )
+texture = ExtResource( 13 )
+
+[node name="Pupil_Right" type="Sprite" parent="Paddle_Container/Paddle/Face"]
+position = Vector2( 35, 0 )
+texture = ExtResource( 13 )
+
+[node name="Mouth" type="Sprite" parent="Paddle_Container/Paddle/Face"]
+position = Vector2( 0, 20 )
+texture = ExtResource( 14 )
+
 [node name="Particles2D" type="Particles2D" parent="Paddle_Container/Paddle"]
 emitting = false
 amount = 6
@@ -201,10 +227,13 @@ script = ExtResource( 11 )
 script = ExtResource( 17 )
 
 [node name="Effect_Paddle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
 
 [node name="Effect_Wall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
 
 [node name="Effect_Brick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 visible = false
